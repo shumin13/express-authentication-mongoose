@@ -10,9 +10,9 @@ var app = express();
 var isLoggedIn = require('./middleware/isLoggedIn');
 
 if (process.env.NODE_ENV === "test") {
-  mongoose.connect(process.env.DATABASE_URL)
-} else {
   mongoose.connect(process.env.TEST_DATABASE_URL)
+} else {
+  mongoose.connect(process.env.DATABASE_URL)
 }
 
 app.set('view engine', 'ejs');
