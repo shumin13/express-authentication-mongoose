@@ -6,9 +6,9 @@ var mongoose = require('mongoose')
 var app = express();
 
 if (process.env.NODE_ENV === "test") {
-  mongoose.connect('mongodb://localhost/express-authentication')
-} else {
   mongoose.connect('mongodb://localhost/express-authentication-test')
+} else {
+  mongoose.connect('mongodb://localhost/express-authentication')
 }
 
 app.engine('handlebars', exphbs({
@@ -18,7 +18,7 @@ app.set('view engine', 'handlebars')
 
 
 app.use(require('morgan')('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
   res.render('index');
